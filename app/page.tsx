@@ -1,10 +1,15 @@
-import Image from "next/image";
-import {Dashboard} from "@/components/shades/Block";
+// pages/index.tsx
 
-export default function Home() {
+import React from 'react';
+import ImageUploader from '../components/ImageUploader';
+
+const Home: React.FC = () => {
   return (
-   <main>
-    <Dashboard />
-   </main>
+    <div className="container mx-auto p-4  ">
+     
+      <ImageUploader />
+    </div>
   );
-}
+};
+
+export default Home;
