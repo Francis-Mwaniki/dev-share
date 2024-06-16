@@ -1,15 +1,32 @@
-// pages/index.tsx
-
-import React from 'react';
+// "use client";
+import React, { useEffect, useState } from 'react';
 import ImageUploader from '../components/ImageUploader';
-
-const Home: React.FC = () => {
+import { currentUser } from '@clerk/nextjs/server';
+import Images from '@/components/images';
+export default async function Home() {
+  const user = await currentUser();
+  const userId = user?.id;
+   
   return (
-    <div className="container mx-auto p-4  ">
+   <>
+    {userId ? (
+    
      
-      <ImageUploader />
-    </div>
+        <div className="container mx-auto p-4  ">
+          
+     <ImageUploader />
+  
+      </div>
+    ) : (
+      <div
+      className="flex flex-col items-center justify-center min-h-screen"
+      >
+       <Images />
+      </div>
+    )
+    }
+   </>
   );
 };
 
-export default Home;
+
