@@ -8,6 +8,7 @@ import {
   SignedOut,
   UserButton
 } from '@clerk/nextjs'
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 const inter = Inter({ subsets: ["latin"] });
@@ -29,7 +30,11 @@ export default function RootLayout({
       <ClerkProvider>
         <div className="min-h-screen flex flex-col relative">
           {/* Navigation */}
-          <nav className="bg-gray-200 py-4 fixed inset-x-0 top-0 z-20">
+          <nav className="bg-transparent
+
+          backdrop-filter backdrop-blur-lg bg-opacity-40
+
+            py-4 fixed inset-x-0 top-0 z-20">
             <div className="container mx-auto px-4 flex justify-between items-center">
               {/* Logo */}
               <div>

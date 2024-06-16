@@ -44,10 +44,11 @@ const ImageUploader: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="mb-4 bg-gray-100 p-2 rounded  text-black border-none">
+      <p className="text-xs text-gray-500 p-4">Select an image to upload</p>
+      <div className="flex items-center gap-x-2">
         <Input type="file" className='  text-black border-none' 
         style={{ 
           backgroundColor: 'transparent',
-          color: 'white',
           border: 'none',
           padding: '0.5rem',
           borderRadius: '0.5rem',
@@ -59,6 +60,7 @@ const ImageUploader: React.FC = () => {
          }}
          placeholder="Select an image"
         onChange={handleFileChange} />
+        </div>
       </div>
       <Button
         onClick={simulateUpload}
