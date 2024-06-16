@@ -1,7 +1,15 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+} from '@clerk/nextjs'
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -15,8 +23,42 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+  
     <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <body>
+      <ClerkProvider>
+        <div className="min-h-screen flex flex-col relative">
+          {/* Navigation */}
+          <nav className="bg-gray-200 py-4 fixed inset-x-0 top-0 z-20">
+            <div className="container mx-auto px-4 flex justify-between items-center">
+              {/* Logo */}
+              <div>
+                <Link href="/" className="text-gray-700 font-bold text-xl">
+                  Dev-Share
+                </Link>
+              </div>
+
+              {/* Auth Buttons */}
+              <div className="flex items-center">
+                <SignedOut>
+                  <SignInButton>
+                    <Button >
+                      Sign In
+                    </Button>
+                  </SignInButton>
+                </SignedOut>
+                <SignedIn>
+                  <UserButton />
+                </SignedIn>
+              </div>
+            </div>
+          </nav>
+
+          {/* Content */}
+          <main className="flex-grow">{children}</main>
+        </div>
+      </ClerkProvider>
+    </body>
+  </html>
   );
 }
