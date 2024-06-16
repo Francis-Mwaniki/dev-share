@@ -1,7 +1,7 @@
 // components/ImageUploader.tsx
 
 'use client';
-
+import { ArrowRight, ImagePlus } from 'lucide-react';
 import React, { useState, ChangeEvent } from 'react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -43,14 +43,30 @@ const ImageUploader: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
-      <div className="mb-4">
-        <Input type="file" onChange={handleFileChange} />
+      <div className="mb-4 bg-gray-100 p-2 rounded  text-black border-none">
+        <Input type="file" className='  text-black border-none' 
+        style={{ 
+          backgroundColor: 'transparent',
+          color: 'white',
+          border: 'none',
+          padding: '0.5rem',
+          borderRadius: '0.5rem',
+          width: '100%',
+          cursor: 'pointer',
+          textAlign: 'center',
+          outline: 'none',
+          
+         }}
+         placeholder="Select an image"
+        onChange={handleFileChange} />
       </div>
       <Button
         onClick={simulateUpload}
         className=""
       >
-        Upload Image
+        <div className="flex items-center gap-x-2">
+        <span>Upload Image</span> <ImagePlus size={24} />
+        </div>
       </Button>
       {selectedFile && (
         <>
